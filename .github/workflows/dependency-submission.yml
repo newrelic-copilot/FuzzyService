@@ -33,7 +33,10 @@ jobs:
 
   deployment_tracking:
     runs-on: ubuntu-latest
-    needs: dependency_submission
+    
+    # Minimal permissions required for deployment tracking
+    permissions:
+      contents: read
     
     steps:
       - name: Record deployment
