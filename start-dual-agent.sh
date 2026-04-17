@@ -2,6 +2,8 @@
 # Start FuzzyService with two New Relic agents (two separate JVM processes)
 # Each process reports to a different NR account.
 #
+# Ports: 9005 (Account 1), 9006 (Account 2)
+#
 # Required env vars:
 #   NEW_RELIC_LICENSE_KEY_1 - Ingest license key for NR Account 1
 #   NEW_RELIC_LICENSE_KEY_2 - Ingest license key for NR Account 2
@@ -31,23 +33,23 @@ if [ ! -f "$APP_JAR" ]; then
   ./gradlew build -x test
 fi
 
-echo "Starting FuzzyService with NR Agent -> Account 1 (port 8080)..."
+echo "Starting FuzzyService with NR Agent -> Account 1 (port 9005)..."
 java -javaagent:$NR_AGENT \
   -Dnewrelic.config.file=newrelic/newrelic-account1.yml \
   -Dnewrelic.environment=production \
   -jar $APP_JAR \
-  --server.port=8080 &
+  --server.port=9005 &
 PID1=$!
 
-echo "Starting FuzzyService with NR Agent -> Account 2 (port 8081)..."
+echo "Starting FuzzyService with NR Agent -> Account 2 (port 9006)..."
 java -javaagent:$NR_AGENT \
   -Dnewrelic.config.file=newrelic/newrelic-account2.yml \
   -Dnewrelic.environment=production \
   -jar $APP_JAR \
-  --server.port=8081 &
+  --server.port=9006 &
 PID2=$!
 
-echo "Both instances running: PID1=$PID1 (Account1:8080), PID2=$PID2 (Account2:8081)"
+echo "Both instances running: PID1=$PID1 (Account1:9005), PID2=$PID2 (Account2:9006)"
 echo "To stop: kill $PID1 $PID2"
 
 wait $PID1 $PID2
