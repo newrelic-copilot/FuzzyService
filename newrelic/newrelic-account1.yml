@@ -1,6 +1,6 @@
 common: &default_settings
   license_key: '<%= ENV["NEW_RELIC_LICENSE_KEY_1"] %>'
-  app_name: FuzzyService-Account1
+  app_name: FuzzyService
   log_level: info
   audit_mode: false
 
@@ -32,11 +32,11 @@ common: &default_settings
 
 development:
   <<: *default_settings
-  app_name: FuzzyService-Account1 (Development)
+  app_name: FuzzyService (Development)
 
 staging:
   <<: *default_settings
-  app_name: FuzzyService-Account1 (Staging)
+  app_name: FuzzyService (Staging)
 
 production:
   <<: *default_settings
