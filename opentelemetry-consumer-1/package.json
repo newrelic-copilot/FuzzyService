@@ -1,0 +1,16 @@
+{
+  "name": "opentelemetry-consumer-1",
+  "version": "1.0.0",
+  "description": "OpenTelemetry protobuf consumer service",
+  "main": "src/consumer.js",
+  "scripts": {
+    "start": "node src/consumer.js",
+    "test": "node --test src/consumer.test.js"
+  },
+  "dependencies": {
+    "protobufjs": "^7.5.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
