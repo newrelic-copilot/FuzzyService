@@ -31,8 +31,8 @@ import java.util.logging.Logger;
 @SpringBootApplication
 @RestController
 public class Main {
-    static final String SERVICE_NAME = "FuzzyService";
-    static final String HOME_MESSAGE = SERVICE_NAME + " is running";
+    public static final String SERVICE_NAME = "FuzzyService";
+    public static final String HOME_MESSAGE = SERVICE_NAME + " is running";
     static Logger logger = Logger.getLogger(String.valueOf(Main.class));
 
     public static void main(String[] args) {
