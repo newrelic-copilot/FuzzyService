@@ -7,18 +7,15 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MainTest {
+    private final Main main = new Main();
 
     @Test
     void healthReturnsExpectedPayload() {
-        Main main = new Main();
-
         assertEquals(Map.of("status", "UP", "service", "FuzzyService"), main.health());
     }
 
     @Test
     void homeReturnsExpectedMessage() {
-        Main main = new Main();
-
         assertEquals("FuzzyService is running", main.home());
     }
 }
