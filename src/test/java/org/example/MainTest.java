@@ -11,11 +11,11 @@ class MainTest {
 
     @Test
     void healthReturnsExpectedPayload() {
-        assertEquals(Map.of("status", "UP", "service", "FuzzyService"), main.health());
+        assertEquals(Map.of("status", "UP", "service", Main.SERVICE_NAME), main.health());
     }
 
     @Test
     void homeReturnsExpectedMessage() {
-        assertEquals("FuzzyService is running", main.home());
+        assertEquals(Main.HOME_MESSAGE, main.home());
     }
 }
