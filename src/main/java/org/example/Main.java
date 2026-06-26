@@ -16,10 +16,14 @@ import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilderFact
 import com.google.common.io.Files;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.net.ftp.FTPClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -32,6 +36,9 @@ import java.util.logging.Logger;
 @RestController
 public class Main {
     static Logger logger = Logger.getLogger(String.valueOf(Main.class));
+
+    @Autowired
+    private BatchProcessor batchProcessor;
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
@@ -56,6 +63,11 @@ public class Main {
         );
         Map<String, String> lazyMap = LazyMap.lazyMap(new HashMap<String, String>(), transformer);
         lazyMap.put("key", "value");
+    }
+
+    @PostMapping("/batch")
+    public List<String> batch(@RequestBody List<String> items) {
+        return batchProcessor.processItems(items);
     }
 
     @GetMapping("/health")
