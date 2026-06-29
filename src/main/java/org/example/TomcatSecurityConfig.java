@@ -15,6 +15,7 @@ public class TomcatSecurityConfig {
     public WebServerFactoryCustomizer<TomcatServletWebServerFactory> tomcatHeaderLimitsCustomizer() {
         return factory -> factory.addConnectorCustomizers(connector -> {
             connector.setProperty("maxHttpRequestHeaderSize", String.valueOf(MAX_HTTP_HEADER_SIZE));
+            connector.setProperty("maxHttpHeaderSize", String.valueOf(MAX_HTTP_HEADER_SIZE));
             connector.setProperty("maxHeaderCount", String.valueOf(MAX_HTTP_HEADER_COUNT));
         });
     }
