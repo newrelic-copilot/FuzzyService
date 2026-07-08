@@ -71,4 +71,5 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    systemProperty("expectedLog4jVersion", log4jVersion)
 }

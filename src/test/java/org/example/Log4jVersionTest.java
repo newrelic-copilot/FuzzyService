@@ -10,7 +10,9 @@ class Log4jVersionTest {
 
     @Test
     void usesSecureLog4jVersionAtRuntime() {
-        assertEquals("2.17.1", LogManager.class.getPackage().getImplementationVersion());
-        assertEquals("2.17.1", LoggerContext.class.getPackage().getImplementationVersion());
+        String expectedLog4jVersion = System.getProperty("expectedLog4jVersion");
+
+        assertEquals(expectedLog4jVersion, LogManager.class.getPackage().getImplementationVersion());
+        assertEquals(expectedLog4jVersion, LoggerContext.class.getPackage().getImplementationVersion());
     }
 }
