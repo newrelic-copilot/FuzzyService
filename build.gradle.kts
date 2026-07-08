@@ -65,7 +65,7 @@ dependencies {
 
     implementation ("commons-net:commons-net:3.6")
 
-    testImplementation ("org.junit.jupiter:junit-jupiter-api")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
