@@ -35,7 +35,7 @@ tasks.register<Copy>("unzipNewrelic") {
 configurations.all {
     resolutionStrategy.eachDependency {
         if (requested.group == "org.apache.logging.log4j") {
-            useVersion("2.17.1")
+            useVersion("2.23.1")
             because("CVE-2021-44228: Log4Shell remote code execution vulnerability fix")
         }
     }
@@ -48,8 +48,8 @@ dependencies {
 
     implementation ("org.springframework.boot:spring-boot-starter-web")
 
-    implementation ("org.apache.logging.log4j:log4j-core:2.17.1")
-    implementation ("org.apache.logging.log4j:log4j-api:2.17.1")
+    implementation ("org.apache.logging.log4j:log4j-core:2.23.1")
+    implementation ("org.apache.logging.log4j:log4j-api:2.23.1")
 
     implementation ("com.google.code.gson:gson:2.8.9")
 
